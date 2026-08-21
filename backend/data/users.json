@@ -1,0 +1,38 @@
+[
+  {
+    "id": "97ec1e4b-af80-4f32-9b46-a3a9f62f4e1b",
+    "name": "Ash Ketchem",
+    "email": "vywppslroh@gmeenramy.com",
+    "phone": "1234567890",
+    "company": "Pokemon.ltd",
+    "title": "",
+    "contactId": 1130007868679,
+    "companyId": 1130000384009,
+    "passwordHash": "$2b$10$jLaYqZ4PcErJXuz.z5PCEOpRNrbmWdJ7aXh3A/rT04u148mGWzbGK",
+    "createdAt": "2026-08-19T05:28:30.426Z"
+  },
+  {
+    "id": "f126fd92-1b00-478b-8539-9ecd19771c01",
+    "name": "Grabby Bills",
+    "email": "uplsee61b2@lnovic.com",
+    "phone": "2345678910",
+    "company": "Frog Store.ltd",
+    "title": "",
+    "contactId": 1130007869715,
+    "companyId": 1130000384016,
+    "passwordHash": "$2b$10$/e0VevPCAw30Q7ivYWkJTO5iDxCWcD1HUmO8COw13n856H8h9Z4UC",
+    "createdAt": "2026-08-19T06:07:30.597Z"
+  },
+  {
+    "id": "1e5e3816-1297-4637-8043-40527878ab0a",
+    "name": "Roger Adams",
+    "email": "xixidi1753@playboot.com",
+    "phone": "912086465***",
+    "company": "Pinnacle Solutions",
+    "title": "",
+    "contactId": 1130007878981,
+    "companyId": 1130000384136,
+    "passwordHash": "$2b$10$Y0AI9m.BKlkDCaOPIHHfcuiwCsGA1b2OoF4/p7Ci4N.Mu7/3kh4v2",
+    "createdAt": "2026-08-19T11:41:57.411Z"
+  }
+]
