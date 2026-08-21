@@ -1,0 +1,3947 @@
+/* =========================================================
+   BACKJOBS — COMPLETE LIGHT UI
+   FULL REPLACEMENT FOR App.css
+   App.jsx remains unchanged
+========================================================= */
+
+/* ================= VARIABLES ================= */
+
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-soft: #fafaff;
+
+  --border: #e7e9f0;
+  --border-strong: #dfe1ea;
+
+  --text: #252735;
+  --text-muted: #858b9a;
+  --text-light: #a5a9b5;
+
+  --primary: #6756d9;
+  --primary-hover: #5747c4;
+  --primary-soft: #f0edff;
+
+  --blue: #4d8df7;
+  --blue-soft: #edf4ff;
+
+  --green: #28a968;
+  --green-soft: #e9f8ef;
+
+  --orange: #e59b37;
+  --orange-soft: #fff4e3;
+
+  --red: #e45454;
+  --red-soft: #fdecec;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 2px 8px rgba(30, 35, 55, 0.04);
+  --shadow: 0 8px 28px rgba(30, 35, 55, 0.07);
+
+  --transition: 0.18s ease;
+}
+
+/* ================= RESET ================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 14px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea {
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition),
+    color var(--transition);
+}
+
+/* ================= APP ================= */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+
+  background: var(--bg);
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 248px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 22px 12px;
+
+  overflow: hidden;
+
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+
+  z-index: 100;
+}
+
+/* ================= BRAND ================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 2px 10px 28px;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #5c4bd2,
+    #8d78ee
+  );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 16px rgba(103, 86, 217, 0.22);
+}
+
+.brand-name {
+  color: var(--text);
+
+  font-size: 16px;
+  font-weight: 800;
+
+  letter-spacing: -0.4px;
+}
+
+.brand-tag {
+  margin-top: 2px;
+
+  color: var(--text-light);
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.6px;
+}
+
+/* ================= SIDEBAR NAV ================= */
+
+.sidebar nav {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding-right: 3px;
+}
+
+.sidebar nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar nav::-webkit-scrollbar-thumb {
+  background: #d8dae3;
+  border-radius: 10px;
+}
+
+.nav-group {
+  margin-top: 18px;
+}
+
+.group-title {
+  margin: 0 0 7px;
+  padding: 0 12px;
+
+  color: #a3a7b3;
+
+  font-size: 9px;
+  font-weight: 750;
+
+  letter-spacing: 0.9px;
+}
+
+.nav-item {
+  width: 100%;
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin: 2px 0;
+  padding: 0 12px;
+
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #687080;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: left;
+}
+
+.nav-item svg {
+  flex-shrink: 0;
+
+  width: 17px;
+  height: 17px;
+
+  color: #8a90a0;
+}
+
+.nav-item:hover {
+  background: #f7f6fc;
+  color: var(--primary);
+}
+
+.nav-item:hover svg {
+  color: var(--primary);
+}
+
+.nav-item.active {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.nav-item.active svg {
+  color: var(--primary);
+}
+
+/* ================= ROLE CARD ================= */
+
+.current-role {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 16px;
+  padding: 16px 10px 3px;
+
+  border-top: 1px solid var(--border);
+}
+
+.role-icon {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.role-caption {
+  margin-bottom: 3px;
+
+  color: var(--text-light);
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+}
+
+.current-role strong {
+  display: block;
+
+  color: #343743;
+
+  font-size: 10px;
+}
+
+.role-status {
+  margin-top: 3px;
+
+  color: var(--text-muted);
+
+  font-size: 8px;
+}
+
+.role-status span {
+  width: 6px;
+  height: 6px;
+
+  display: inline-block;
+
+  margin-right: 4px;
+
+  border-radius: 50%;
+
+  background: var(--green);
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+  width: calc(100% - 248px);
+  min-height: 100vh;
+
+  margin-left: 248px;
+
+  background: var(--bg);
+}
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 0 30px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border-bottom: 1px solid var(--border);
+
+  backdrop-filter: blur(14px);
+
+  z-index: 50;
+}
+
+/* ================= SEARCH ================= */
+
+.search {
+  width: min(380px, 42vw);
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 0 13px;
+
+  border: 1px solid #e5e7ee;
+  border-radius: 9px;
+
+  background: #fafbfe;
+
+  color: #969ca9;
+}
+
+.search:focus-within {
+  background: var(--surface);
+
+  border-color: #aaa0ed;
+
+  box-shadow:
+    0 0 0 3px rgba(103, 86, 217, 0.08);
+}
+
+.search svg {
+  flex-shrink: 0;
+}
+
+.search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: var(--text);
+
+  font-size: 11px;
+}
+
+.search input::placeholder {
+  color: #a4a8b4;
+}
+
+/* ================= TOP ACTIONS ================= */
+
+.top-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.switch-btn {
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0 12px;
+
+  border: 1px solid #e3e5ec;
+  border-radius: 9px;
+
+  background: var(--surface);
+
+  color: #606775;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.switch-btn:hover {
+  background: #faf9ff;
+
+  border-color: #d5cff2;
+
+  color: var(--primary);
+}
+
+.icon-btn {
+  position: relative;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #747a88;
+}
+
+.icon-btn:hover {
+  background: #f5f4fa;
+
+  color: var(--primary);
+}
+
+/* ================= NOTIFICATION ================= */
+
+.notification span {
+  position: absolute;
+
+  top: 4px;
+  right: 4px;
+
+  min-width: 15px;
+  height: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 3px;
+
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+
+  background: var(--red);
+
+  color: white;
+
+  font-size: 7px;
+  font-weight: 700;
+}
+
+/* ================= PROFILE ================= */
+
+.profile {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6756d9,
+      #967ff0
+    );
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.profile strong {
+  display: block;
+
+  color: #353844;
+
+  font-size: 10px;
+}
+
+.profile small {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #979ba7;
+
+  font-size: 8px;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content,
+.customer-content {
+  width: 100%;
+
+  padding: 28px 30px 45px;
+}
+
+/* ================= HEADERS ================= */
+
+.dashboard-head,
+.page-head,
+.customer-page-head {
+  margin-bottom: 24px;
+}
+
+.dashboard-head h1,
+.page-head h1,
+.customer-page-head h1,
+.content h1 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: clamp(23px, 2vw, 28px);
+  font-weight: 750;
+
+  letter-spacing: -0.7px;
+}
+
+.dashboard-head p,
+.page-head p,
+.customer-page-head p {
+  margin: 6px 0 0;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.stats,
+.stats-grid,
+.customer-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(185px, 1fr));
+
+  gap: 16px;
+
+  margin-bottom: 20px;
+}
+
+.stat-card,
+.customer-stat {
+  min-height: 125px;
+
+  padding: 18px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.stat-card:hover,
+.customer-stat:hover {
+  transform: translateY(-2px);
+
+  border-color: #ded9f7;
+
+  box-shadow: var(--shadow);
+}
+
+.stat-card h2,
+.stat-card strong,
+.customer-stat h2,
+.customer-stat strong {
+  color: var(--text);
+}
+
+.stat-card h3,
+.stat-card span,
+.stat-card small,
+.customer-stat h3,
+.customer-stat span,
+.customer-stat small {
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   CARDS / PANELS
+========================================================= */
+
+.panel,
+.card,
+.dashboard-card,
+.chart-card,
+.list-card,
+.table-card,
+.tickets-card,
+.customer-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.panel,
+.card,
+.dashboard-card,
+.chart-card,
+.list-card {
+  padding: 18px;
+}
+
+.panel:hover,
+.card:hover,
+.dashboard-card:hover {
+  border-color: #e0ddf2;
+}
+
+/* =========================================================
+   GRIDS
+========================================================= */
+
+.dashboard-grid,
+.charts-grid,
+.lists-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(300px, 1fr));
+
+  gap: 18px;
+
+  margin-top: 18px;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-btn,
+.btn-primary {
+  padding: 9px 14px;
+
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  background: var(--primary);
+
+  color: white;
+
+  font-size: 10px;
+  font-weight: 650;
+
+  box-shadow:
+    0 5px 14px rgba(103, 86, 217, 0.18);
+
+  transition:
+    background var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.primary-btn:hover,
+.btn-primary:hover {
+  background: var(--primary-hover);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px rgba(103, 86, 217, 0.25);
+}
+
+.primary-btn:active,
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.secondary-btn,
+.btn-secondary {
+  padding: 9px 14px;
+
+  border: 1px solid #e1e3ea;
+  border-radius: 9px;
+
+  background: var(--surface);
+
+  color: #626876;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.secondary-btn:hover,
+.btn-secondary:hover {
+  background: #f9f9fc;
+
+  border-color: #d5d8e2;
+}
+
+/* =========================================================
+   TABLES
+========================================================= */
+
+.table-card {
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+th {
+  padding: 12px;
+
+  background: #fafbfc;
+
+  color: #9499a6;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-align: left;
+
+  letter-spacing: 0.3px;
+}
+
+td {
+  padding: 13px 12px;
+
+  border-top: 1px solid #eef0f4;
+
+  color: #59606e;
+
+  font-size: 10px;
+}
+
+tbody tr {
+  transition: background var(--transition);
+}
+
+tbody tr:hover {
+  background: #faf9ff;
+}
+
+/* =========================================================
+   BADGES / STATUS
+========================================================= */
+
+.badge,
+.status {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 8px;
+
+  border-radius: 999px;
+
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.badge-open {
+  background: var(--blue-soft);
+  color: #4b7fd0;
+}
+
+.badge-pending {
+  background: var(--orange-soft);
+  color: #c88724;
+}
+
+.badge-resolved {
+  background: var(--green-soft);
+  color: #279759;
+}
+
+.badge-closed {
+  background: #f0f1f4;
+  color: #777e8c;
+}
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+input,
+select,
+textarea {
+  border-radius: var(--radius-sm);
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea,
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  border: 1px solid #e0e2e9;
+
+  background: #ffffff;
+
+  color: var(--text);
+}
+
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+
+  border-color: #aaa0ed;
+
+  box-shadow:
+    0 0 0 3px rgba(103, 86, 217, 0.08);
+}
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.app .modal-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 24px !important;
+
+    background: rgba(246, 247, 251, 0.82) !important;
+
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+/* =========================================================
+   CUSTOMER AREA
+========================================================= */
+
+.customer-sidebar,
+.customer-header,
+.customer-topbar {
+  background: var(--surface);
+
+  border-color: var(--border);
+}
+
+.customer-main {
+  min-height: 100vh;
+
+  background: var(--bg);
+}
+
+.customer-hero {
+  border: none;
+  border-radius: var(--radius-lg);
+
+  background:
+    linear-gradient(
+      135deg,
+      #6756d9,
+      #8c78ec
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 30px rgba(103, 86, 217, 0.2);
+}
+
+/* =========================================================
+   LISTS / ACTIVITY
+========================================================= */
+
+.activity,
+.attention-item,
+.customer-ticket-row,
+.manager-ticket-row {
+  transition:
+    background var(--transition),
+    transform var(--transition);
+}
+
+.activity:hover,
+.attention-item:hover {
+  background: #faf9ff;
+
+  border-radius: 9px;
+}
+
+/* =========================================================
+   EMPTY STATES
+========================================================= */
+
+.empty,
+.customer-empty {
+  border: 1px dashed #d8dbe4;
+  border-radius: var(--radius);
+
+  background: #fbfbfd;
+
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f5f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d7e0;
+
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bfc3cf;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .main {
+    width: calc(100% - 220px);
+
+    margin-left: 220px;
+  }
+
+  .content,
+  .customer-content {
+    padding: 24px 22px 38px;
+  }
+
+  .search {
+    width: min(300px, 35vw);
+  }
+}
+
+@media (max-width: 850px) {
+  .sidebar {
+    width: 72px;
+
+    padding: 20px 8px;
+  }
+
+  .brand {
+    justify-content: center;
+
+    padding: 2px 0 25px;
+  }
+
+  .brand > :not(.brand-mark) {
+    display: none;
+  }
+
+  .group-title {
+    display: none;
+  }
+
+  .nav-item {
+    justify-content: center;
+
+    padding: 0;
+  }
+
+  .nav-item span {
+    display: none;
+  }
+
+  .main {
+    width: calc(100% - 72px);
+
+    margin-left: 72px;
+  }
+
+  .current-role > :not(.role-icon) {
+    display: none;
+  }
+
+  .current-role {
+    justify-content: center;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .search {
+    width: 220px;
+  }
+
+  .profile > :not(.avatar) {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .topbar {
+    height: 64px;
+
+    padding: 0 14px;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .switch-btn {
+    width: 38px;
+
+    justify-content: center;
+
+    padding: 0;
+
+    font-size: 0;
+  }
+
+  .profile {
+    display: none;
+  }
+
+  .content,
+  .customer-content {
+    padding: 18px 14px 32px;
+  }
+
+  .stats,
+  .stats-grid,
+  .customer-stats,
+  .dashboard-grid,
+  .charts-grid,
+  .lists-grid {
+    grid-template-columns: 1fr;
+  }
+}/* =========================================================
+   FIX — TICKETS PAGE
+========================================================= */
+
+/* Main ticket panel */
+
+.panel {
+  width: 100%;
+  padding: 24px;
+  border: 1px solid #e5e7ef;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(25, 30, 50, 0.04);
+}
+
+
+/* ================= TOOLBAR ================= */
+
+.manager-ticket-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+
+  width: 100% !important;
+
+  margin-bottom: 20px !important;
+}
+
+
+/* ================= SEARCH ================= */
+
+.lead-search {
+  flex: 1 !important;
+
+  min-width: 0 !important;
+  height: 46px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 10px !important;
+
+  padding: 0 14px !important;
+
+  border: 1px solid #e1e4ec !important;
+  border-radius: 10px !important;
+
+  background: #fafbfe !important;
+
+  color: #8b92a1 !important;
+}
+
+.lead-search:focus-within {
+  background: #ffffff !important;
+
+  border-color: #8b7ce8 !important;
+
+  box-shadow:
+    0 0 0 3px rgba(103, 86, 217, 0.1) !important;
+}
+
+.lead-search input {
+  flex: 1 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  border: none !important;
+  outline: none !important;
+
+  background: transparent !important;
+
+  color: #242633 !important;
+
+  font-size: 13px !important;
+}
+
+.lead-search input::placeholder {
+  color: #a2a7b3 !important;
+}
+
+
+/* ================= STATUS FILTER ================= */
+
+.manager-ticket-toolbar select {
+  width: 150px !important;
+  height: 46px !important;
+
+  padding: 0 14px !important;
+
+  border: 1px solid #e1e4ec !important;
+  border-radius: 10px !important;
+
+  background: #ffffff !important;
+
+  color: #555d6c !important;
+
+  font-size: 13px !important;
+
+  outline: none !important;
+
+  cursor: pointer !important;
+}
+
+.manager-ticket-toolbar select:focus {
+  border-color: #8b7ce8 !important;
+
+  box-shadow:
+    0 0 0 3px rgba(103, 86, 217, 0.1) !important;
+}
+
+
+/* ================= TICKET LIST ================= */
+
+.manager-ticket-list {
+  width: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 10px !important;
+}
+
+
+/* ================= TICKET ROW ================= */
+
+.manager-ticket-row {
+  width: 100% !important;
+  min-height: 78px !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    140px
+    minmax(0, 1fr)
+    100px
+    100px !important;
+
+  align-items: center !important;
+
+  gap: 20px !important;
+
+  padding: 14px 18px !important;
+
+  border: 1px solid #e7e9f0 !important;
+  border-radius: 12px !important;
+
+  background: #ffffff !important;
+
+  color: #242633 !important;
+
+  text-align: left !important;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease !important;
+}
+
+.manager-ticket-row:hover {
+  transform: translateY(-1px) !important;
+
+  background: #fcfbff !important;
+
+  border-color: #d8d2f5 !important;
+
+  box-shadow:
+    0 8px 20px rgba(40, 35, 80, 0.06) !important;
+}
+
+
+/* ================= TICKET ID ================= */
+
+.manager-ticket-id {
+  display: block !important;
+
+  color: #747b8b !important;
+
+  font-size: 12px !important;
+  font-weight: 650 !important;
+}
+
+
+/* ================= MAIN TICKET INFO ================= */
+
+.manager-ticket-main {
+  min-width: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 5px !important;
+}
+
+.manager-ticket-main strong {
+  display: block !important;
+
+  overflow: hidden !important;
+
+  color: #252735 !important;
+
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+.manager-ticket-main small {
+  display: block !important;
+
+  overflow: hidden !important;
+
+  color: #8b91a0 !important;
+
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+
+  font-size: 11px !important;
+}
+
+
+/* ================= PRIORITY BADGES ================= */
+
+.badge {
+  display: inline-flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: fit-content !important;
+
+  min-width: 68px !important;
+
+  padding: 6px 10px !important;
+
+  border-radius: 999px !important;
+
+  font-size: 10px !important;
+  font-weight: 700 !important;
+
+  text-transform: capitalize !important;
+}
+
+.badge.low {
+  background: #edf3ff !important;
+  color: #4c78c7 !important;
+}
+
+.badge.medium {
+  background: #fff4df !important;
+  color: #bd7a1e !important;
+}
+
+.badge.high {
+  background: #ffebeb !important;
+  color: #cf5555 !important;
+}
+
+.badge.urgent {
+  background: #fbe8f8 !important;
+  color: #b74c9e !important;
+}
+
+
+/* ================= STATUS ================= */
+
+.manager-status {
+  display: inline-flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: fit-content !important;
+
+  min-width: 76px !important;
+
+  padding: 6px 10px !important;
+
+  border-radius: 999px !important;
+
+  font-size: 10px !important;
+  font-weight: 700 !important;
+}
+
+.manager-status.open {
+  background: #edf4ff !important;
+  color: #477dcf !important;
+}
+
+.manager-status.pending {
+  background: #fff4e3 !important;
+  color: #bd7d22 !important;
+}
+
+.manager-status.resolved {
+  background: #e8f8ee !important;
+  color: #258f56 !important;
+}
+
+.manager-status.closed {
+  background: #f0f1f4 !important;
+  color: #727987 !important;
+}
+
+
+/* ================= REFRESH BUTTON ================= */
+
+.icon-control {
+  width: 42px !important;
+  height: 42px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border: 1px solid #e2e5ed !important;
+  border-radius: 10px !important;
+
+  background: #ffffff !important;
+
+  color: #6d7482 !important;
+}
+
+.icon-control:hover {
+  background: #f4f2ff !important;
+
+  border-color: #d6cff4 !important;
+
+  color: #6756d9 !important;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 850px) {
+
+  .manager-ticket-row {
+    grid-template-columns:
+      110px
+      minmax(0, 1fr)
+      auto !important;
+  }
+
+  .manager-status {
+    display: none !important;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .panel {
+    padding: 16px !important;
+  }
+
+  .manager-ticket-toolbar {
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+  }
+
+  .manager-ticket-toolbar select {
+    width: 100% !important;
+  }
+
+  .manager-ticket-row {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: flex-start !important;
+
+    gap: 8px !important;
+  }
+
+  .manager-ticket-main strong,
+  .manager-ticket-main small {
+    white-space: normal !important;
+  }
+}/* =========================================================
+   FIX — CUSTOMER PORTAL
+   App.jsx remains unchanged
+========================================================= */
+
+.customer-app {
+  min-height: 100vh;
+  background: #f6f7fb;
+  color: #242633;
+}
+
+/* =========================================================
+   CUSTOMER HEADER
+========================================================= */
+
+.customer-header {
+  min-height: 72px;
+  width: 100%;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  gap: 24px;
+
+  padding: 0 32px;
+
+  background: #ffffff !important;
+  border-bottom: 1px solid #e7e9f0;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Brand */
+
+.customer-header .brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+.customer-header .brand-mark {
+  width: 40px;
+  height: 40px;
+
+  display: grid !important;
+  place-items: center;
+
+  border-radius: 11px;
+
+  background: linear-gradient(135deg, #6756d9, #8c76ed);
+  color: white;
+
+  font-weight: 700;
+
+  box-shadow: 0 6px 16px rgba(103, 86, 217, 0.2);
+}
+
+.customer-header .brand-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: #242633;
+}
+
+.customer-header .brand-tag {
+  margin-top: 2px;
+
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+
+  color: #9aa0ad;
+}
+
+/* =========================================================
+   CUSTOMER NAVIGATION
+========================================================= */
+
+.customer-nav {
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 4px;
+
+  margin-right: auto;
+}
+
+.customer-nav button {
+  height: 38px;
+
+  padding: 0 14px;
+
+  border: none !important;
+  border-radius: 8px;
+
+  background: transparent !important;
+
+  color: #687080;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.customer-nav button:hover {
+  background: #f4f2ff !important;
+  color: #6756d9;
+}
+
+.customer-nav button.active {
+  background: #f0edff !important;
+  color: #6756d9;
+}
+
+/* =========================================================
+   TOP ACTIONS
+========================================================= */
+
+.customer-top-actions {
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+.customer-top-actions strong {
+  display: block;
+
+  font-size: 12px;
+  color: #303341;
+}
+
+.customer-top-actions small {
+  font-size: 9px;
+  color: #9096a4;
+}
+
+/* Override inline browser-looking buttons */
+
+.customer-top-actions .switch-btn {
+  min-height: 38px;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 6px;
+
+  padding: 0 12px !important;
+
+  border: 1px solid #e2e5ec !important;
+  border-radius: 9px !important;
+
+  background: #ffffff !important;
+  color: #59606f !important;
+
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+.customer-top-actions .switch-btn:hover {
+  background: #f4f2ff !important;
+  border-color: #d8d2f5 !important;
+  color: #6756d9 !important;
+}
+
+/* =========================================================
+   CUSTOMER MAIN CONTENT
+========================================================= */
+
+.customer-main {
+  width: 100%;
+  max-width: 1400px;
+
+  min-height: calc(100vh - 72px);
+
+  margin: 0 auto;
+  padding: 32px;
+
+  background: #f6f7fb;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.customer-hero {
+  width: 100%;
+
+  display: flex !important;
+  align-items: center;
+
+  min-height: 220px;
+
+  padding: 36px 40px !important;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5d4dc8 0%,
+      #6756d9 45%,
+      #8a76e8 100%
+    ) !important;
+
+  color: white !important;
+
+  box-shadow:
+    0 14px 35px rgba(103, 86, 217, 0.2);
+}
+
+.customer-hero > div {
+  max-width: 720px;
+}
+
+.customer-hero .eyebrow {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: rgba(255, 255, 255, 0.7) !important;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.customer-hero h1 {
+  margin: 0 0 10px !important;
+
+  color: #ffffff !important;
+
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 750;
+  letter-spacing: -1px;
+}
+
+.customer-hero p {
+  margin: 0 0 22px !important;
+
+  max-width: 650px;
+
+  color: rgba(255, 255, 255, 0.82) !important;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   CUSTOMER PRIMARY BUTTON
+========================================================= */
+
+.customer-primary {
+  min-height: 42px;
+
+  padding: 0 17px;
+
+  border: none !important;
+  border-radius: 9px !important;
+
+  background: #ffffff !important;
+  color: #5d4dc8 !important;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease !important;
+}
+
+.customer-primary:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 22px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================================================
+   CUSTOMER STATS
+========================================================= */
+
+.customer-stats {
+  width: 100%;
+
+  display: grid !important;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin: 20px 0 28px !important;
+}
+
+.customer-stats > div {
+  min-height: 105px;
+
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 20px;
+
+  border: 1px solid #e7e9f0;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow: 0 3px 12px rgba(30, 35, 55, 0.04);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.customer-stats > div:hover {
+  transform: translateY(-2px);
+
+  border-color: #dcd6f4;
+
+  box-shadow:
+    0 10px 25px rgba(30, 35, 55, 0.07);
+}
+
+.customer-stats span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #89909e;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.customer-stats strong {
+  display: block;
+
+  color: #292c38;
+
+  font-size: 28px;
+  font-weight: 750;
+}
+
+/* =========================================================
+   CUSTOMER SECTION
+========================================================= */
+
+.customer-section {
+  width: 100%;
+
+  padding: 24px;
+
+  margin-bottom: 24px;
+
+  border: 1px solid #e7e9f0;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 18px rgba(30, 35, 55, 0.04);
+}
+
+.customer-section .section-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  gap: 16px;
+
+  margin-bottom: 20px;
+}
+
+.customer-section .section-head h1 {
+  margin: 0;
+
+  color: #252735;
+
+  font-size: 20px;
+  font-weight: 750;
+}
+
+.customer-section .section-head p {
+  margin: 5px 0 0;
+
+  color: #89909e;
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   CUSTOMER TICKET LIST
+========================================================= */
+
+.customer-ticket-content {
+  width: 100%;
+}
+
+.customer-ticket-list {
+  width: 100%;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 10px;
+}
+
+.customer-ticket-row {
+  width: 100% !important;
+  min-height: 72px;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  gap: 20px;
+
+  padding: 14px 18px !important;
+
+  border: 1px solid #e7e9f0 !important;
+  border-radius: 11px !important;
+
+  background: #ffffff !important;
+
+  color: #242633 !important;
+
+  text-align: left !important;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease !important;
+}
+
+.customer-ticket-row:hover {
+  transform: translateY(-1px);
+
+  background: #fcfbff !important;
+
+  border-color: #d8d2f5 !important;
+
+  box-shadow:
+    0 7px 18px rgba(35, 30, 75, 0.06);
+}
+
+.ticket-row-main {
+  min-width: 0;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 18px;
+}
+
+.ticket-id {
+  min-width: 70px;
+
+  color: #777f8e;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ticket-info {
+  min-width: 0;
+
+  display: flex !important;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.ticket-info strong {
+  overflow: hidden;
+
+  color: #292c38;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ticket-info small {
+  color: #8e95a3;
+
+  font-size: 11px;
+}
+
+.ticket-arrow {
+  width: 34px;
+  height: 34px;
+
+  display: grid !important;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: #f4f2ff;
+  color: #6756d9;
+
+  font-size: 17px;
+}
+
+/* My Tickets page version */
+
+.customer-ticket-row > strong {
+  display: block;
+
+  color: #292c38;
+
+  font-size: 13px;
+}
+
+.customer-ticket-row > small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #8e95a3;
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   EMPTY / LOADING
+========================================================= */
+
+.customer-main .empty {
+  width: 100%;
+
+  min-height: 150px;
+
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 30px;
+
+  border: 1px dashed #d8dbe4;
+  border-radius: 12px;
+
+  background: #fafbfc;
+
+  color: #8b92a0;
+
+  text-align: center;
+}
+
+.customer-main .empty strong {
+  color: #424654;
+}
+
+.loading-state {
+  flex-direction: row !important;
+}
+
+.loading-spinner {
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid #ddd8f8;
+  border-top-color: #6756d9;
+  border-radius: 50%;
+
+  animation: customer-spin 0.7s linear infinite;
+}
+
+@keyframes customer-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   CUSTOMER FORM
+========================================================= */
+
+.customer-form {
+  width: 100%;
+
+  display: grid !important;
+
+  gap: 18px;
+}
+
+.customer-form label {
+  display: flex !important;
+  flex-direction: column;
+
+  gap: 8px;
+
+  color: #4e5563;
+
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.customer-form input,
+.customer-form select,
+.customer-form textarea {
+  width: 100%;
+
+  padding: 11px 13px;
+
+  border: 1px solid #e0e3eb !important;
+  border-radius: 9px !important;
+
+  outline: none;
+
+  background: #ffffff !important;
+  color: #292c38 !important;
+
+  font-size: 13px;
+}
+
+.customer-form input:focus,
+.customer-form select:focus,
+.customer-form textarea:focus {
+  border-color: #8d80e6 !important;
+
+  box-shadow:
+    0 0 0 3px rgba(103, 86, 217, 0.1);
+}
+
+.customer-form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* =========================================================
+   TICKET DETAIL
+========================================================= */
+
+.ticket-detail {
+  margin-top: 20px;
+  padding: 22px;
+
+  border: 1px solid #e7e9f0;
+  border-radius: 12px;
+
+  background: #fafbfe;
+}
+
+.ticket-detail h2 {
+  margin-top: 0;
+
+  color: #292c38;
+
+  font-size: 18px;
+}
+
+.ticket-detail p {
+  color: #687080;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-banner {
+  margin-bottom: 18px;
+  padding: 12px 15px;
+
+  border: 1px solid #f4caca;
+  border-radius: 10px;
+
+  background: #fff2f2;
+  color: #c74747;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+  .customer-header {
+    padding: 0 20px;
+  }
+
+  .customer-nav {
+    overflow-x: auto;
+  }
+
+  .customer-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .customer-main {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .customer-header {
+    min-height: auto;
+
+    flex-wrap: wrap;
+
+    padding: 14px 16px;
+
+    gap: 12px;
+  }
+
+  .customer-nav {
+    order: 3;
+
+    width: 100%;
+
+    overflow-x: auto;
+  }
+
+  .customer-top-actions > div:first-child {
+    display: none;
+  }
+
+  .customer-main {
+    padding: 18px 14px;
+  }
+
+  .customer-hero {
+    min-height: 200px;
+
+    padding: 25px 22px !important;
+  }
+
+  .customer-hero h1 {
+    font-size: 28px;
+  }
+
+  .customer-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .customer-stats > div {
+    min-height: 90px;
+    padding: 16px;
+  }
+
+  .customer-section {
+    padding: 18px;
+  }
+
+  .ticket-row-main {
+    gap: 12px;
+  }
+
+  .ticket-id {
+    min-width: 48px;
+  }
+}/* =========================================================
+   FIX — CUSTOMER PORTAL
+   App.jsx remains unchanged
+========================================================= */
+
+.customer-app {
+  min-height: 100vh;
+  background: #f6f7fb;
+  color: #242633;
+}
+
+/* =========================================================
+   CUSTOMER HEADER
+========================================================= */
+
+.customer-header {
+  min-height: 72px;
+  width: 100%;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  gap: 24px;
+
+  padding: 0 32px;
+
+  background: #ffffff !important;
+  border-bottom: 1px solid #e7e9f0;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Brand */
+
+.customer-header .brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+.customer-header .brand-mark {
+  width: 40px;
+  height: 40px;
+
+  display: grid !important;
+  place-items: center;
+
+  border-radius: 11px;
+
+  background: linear-gradient(135deg, #6756d9, #8c76ed);
+  color: white;
+
+  font-weight: 700;
+
+  box-shadow: 0 6px 16px rgba(103, 86, 217, 0.2);
+}
+
+.customer-header .brand-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: #242633;
+}
+
+.customer-header .brand-tag {
+  margin-top: 2px;
+
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+
+  color: #9aa0ad;
+}
+
+/* =========================================================
+   CUSTOMER NAVIGATION
+========================================================= */
+
+.customer-nav {
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 4px;
+
+  margin-right: auto;
+}
+
+.customer-nav button {
+  height: 38px;
+
+  padding: 0 14px;
+
+  border: none !important;
+  border-radius: 8px;
+
+  background: transparent !important;
+
+  color: #687080;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.customer-nav button:hover {
+  background: #f4f2ff !important;
+  color: #6756d9;
+}
+
+.customer-nav button.active {
+  background: #f0edff !important;
+  color: #6756d9;
+}
+
+/* =========================================================
+   TOP ACTIONS
+========================================================= */
+
+.customer-top-actions {
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+.customer-top-actions strong {
+  display: block;
+
+  font-size: 12px;
+  color: #303341;
+}
+
+.customer-top-actions small {
+  font-size: 9px;
+  color: #9096a4;
+}
+
+/* Override inline browser-looking buttons */
+
+.customer-top-actions .switch-btn {
+  min-height: 38px;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 6px;
+
+  padding: 0 12px !important;
+
+  border: 1px solid #e2e5ec !important;
+  border-radius: 9px !important;
+
+  background: #ffffff !important;
+  color: #59606f !important;
+
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+.customer-top-actions .switch-btn:hover {
+  background: #f4f2ff !important;
+  border-color: #d8d2f5 !important;
+  color: #6756d9 !important;
+}
+
+/* =========================================================
+   CUSTOMER MAIN CONTENT
+========================================================= */
+
+.customer-main {
+  width: 100%;
+  max-width: 1400px;
+
+  min-height: calc(100vh - 72px);
+
+  margin: 0 auto;
+  padding: 32px;
+
+  background: #f6f7fb;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.customer-hero {
+  width: 100%;
+
+  display: flex !important;
+  align-items: center;
+
+  min-height: 220px;
+
+  padding: 36px 40px !important;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5d4dc8 0%,
+      #6756d9 45%,
+      #8a76e8 100%
+    ) !important;
+
+  color: white !important;
+
+  box-shadow:
+    0 14px 35px rgba(103, 86, 217, 0.2);
+}
+
+.customer-hero > div {
+  max-width: 720px;
+}
+
+.customer-hero .eyebrow {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: rgba(255, 255, 255, 0.7) !important;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.customer-hero h1 {
+  margin: 0 0 10px !important;
+
+  color: #ffffff !important;
+
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 750;
+  letter-spacing: -1px;
+}
+
+.customer-hero p {
+  margin: 0 0 22px !important;
+
+  max-width: 650px;
+
+  color: rgba(255, 255, 255, 0.82) !important;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   CUSTOMER PRIMARY BUTTON
+========================================================= */
+
+.customer-primary {
+  min-height: 42px;
+
+  padding: 0 17px;
+
+  border: none !important;
+  border-radius: 9px !important;
+
+  background: #ffffff !important;
+  color: #5d4dc8 !important;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease !important;
+}
+
+.customer-primary:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 22px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================================================
+   CUSTOMER STATS
+========================================================= */
+
+.customer-stats {
+  width: 100%;
+
+  display: grid !important;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin: 20px 0 28px !important;
+}
+
+.customer-stats > div {
+  min-height: 105px;
+
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 20px;
+
+  border: 1px solid #e7e9f0;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow: 0 3px 12px rgba(30, 35, 55, 0.04);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.customer-stats > div:hover {
+  transform: translateY(-2px);
+
+  border-color: #dcd6f4;
+
+  box-shadow:
+    0 10px 25px rgba(30, 35, 55, 0.07);
+}
+
+.customer-stats span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #89909e;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.customer-stats strong {
+  display: block;
+
+  color: #292c38;
+
+  font-size: 28px;
+  font-weight: 750;
+}
+
+/* =========================================================
+   CUSTOMER SECTION
+========================================================= */
+
+.customer-section {
+  width: 100%;
+
+  padding: 24px;
+
+  margin-bottom: 24px;
+
+  border: 1px solid #e7e9f0;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 18px rgba(30, 35, 55, 0.04);
+}
+
+.customer-section .section-head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  gap: 16px;
+
+  margin-bottom: 20px;
+}
+
+.customer-section .section-head h1 {
+  margin: 0;
+
+  color: #252735;
+
+  font-size: 20px;
+  font-weight: 750;
+}
+
+.customer-section .section-head p {
+  margin: 5px 0 0;
+
+  color: #89909e;
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   CUSTOMER TICKET LIST
+========================================================= */
+
+.customer-ticket-content {
+  width: 100%;
+}
+
+.customer-ticket-list {
+  width: 100%;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 10px;
+}
+
+.customer-ticket-row {
+  width: 100% !important;
+  min-height: 72px;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  gap: 20px;
+
+  padding: 14px 18px !important;
+
+  border: 1px solid #e7e9f0 !important;
+  border-radius: 11px !important;
+
+  background: #ffffff !important;
+
+  color: #242633 !important;
+
+  text-align: left !important;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease !important;
+}
+
+.customer-ticket-row:hover {
+  transform: translateY(-1px);
+
+  background: #fcfbff !important;
+
+  border-color: #d8d2f5 !important;
+
+  box-shadow:
+    0 7px 18px rgba(35, 30, 75, 0.06);
+}
+
+.ticket-row-main {
+  min-width: 0;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 18px;
+}
+
+.ticket-id {
+  min-width: 70px;
+
+  color: #777f8e;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ticket-info {
+  min-width: 0;
+
+  display: flex !important;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.ticket-info strong {
+  overflow: hidden;
+
+  color: #292c38;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ticket-info small {
+  color: #8e95a3;
+
+  font-size: 11px;
+}
+
+.ticket-arrow {
+  width: 34px;
+  height: 34px;
+
+  display: grid !important;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: #f4f2ff;
+  color: #6756d9;
+
+  font-size: 17px;
+}
+
+/* My Tickets page version */
+
+.customer-ticket-row > strong {
+  display: block;
+
+  color: #292c38;
+
+  font-size: 13px;
+}
+
+.customer-ticket-row > small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #8e95a3;
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   EMPTY / LOADING
+========================================================= */
+
+.customer-main .empty {
+  width: 100%;
+
+  min-height: 150px;
+
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 30px;
+
+  border: 1px dashed #d8dbe4;
+  border-radius: 12px;
+
+  background: #fafbfc;
+
+  color: #8b92a0;
+
+  text-align: center;
+}
+
+.customer-main .empty strong {
+  color: #424654;
+}
+
+.loading-state {
+  flex-direction: row !important;
+}
+
+.loading-spinner {
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid #ddd8f8;
+  border-top-color: #6756d9;
+  border-radius: 50%;
+
+  animation: customer-spin 0.7s linear infinite;
+}
+
+@keyframes customer-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   CUSTOMER FORM
+========================================================= */
+
+.customer-form {
+  width: 100%;
+
+  display: grid !important;
+
+  gap: 18px;
+}
+
+.customer-form label {
+  display: flex !important;
+  flex-direction: column;
+
+  gap: 8px;
+
+  color: #4e5563;
+
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.customer-form input,
+.customer-form select,
+.customer-form textarea {
+  width: 100%;
+
+  padding: 11px 13px;
+
+  border: 1px solid #e0e3eb !important;
+  border-radius: 9px !important;
+
+  outline: none;
+
+  background: #ffffff !important;
+  color: #292c38 !important;
+
+  font-size: 13px;
+}
+
+.customer-form input:focus,
+.customer-form select:focus,
+.customer-form textarea:focus {
+  border-color: #8d80e6 !important;
+
+  box-shadow:
+    0 0 0 3px rgba(103, 86, 217, 0.1);
+}
+
+.customer-form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* =========================================================
+   TICKET DETAIL
+========================================================= */
+
+.ticket-detail {
+  margin-top: 20px;
+  padding: 22px;
+
+  border: 1px solid #e7e9f0;
+  border-radius: 12px;
+
+  background: #fafbfe;
+}
+
+.ticket-detail h2 {
+  margin-top: 0;
+
+  color: #292c38;
+
+  font-size: 18px;
+}
+
+.ticket-detail p {
+  color: #687080;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-banner {
+  margin-bottom: 18px;
+  padding: 12px 15px;
+
+  border: 1px solid #f4caca;
+  border-radius: 10px;
+
+  background: #fff2f2;
+  color: #c74747;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+  .customer-header {
+    padding: 0 20px;
+  }
+
+  .customer-nav {
+    overflow-x: auto;
+  }
+
+  .customer-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .customer-main {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .customer-header {
+    min-height: auto;
+
+    flex-wrap: wrap;
+
+    padding: 14px 16px;
+
+    gap: 12px;
+  }
+
+  .customer-nav {
+    order: 3;
+
+    width: 100%;
+
+    overflow-x: auto;
+  }
+
+  .customer-top-actions > div:first-child {
+    display: none;
+  }
+
+  .customer-main {
+    padding: 18px 14px;
+  }
+
+  .customer-hero {
+    min-height: 200px;
+
+    padding: 25px 22px !important;
+  }
+
+  .customer-hero h1 {
+    font-size: 28px;
+  }
+
+  .customer-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .customer-stats > div {
+    min-height: 90px;
+    padding: 16px;
+  }
+
+  .customer-section {
+    padding: 18px;
+  }
+
+  .ticket-row-main {
+    gap: 12px;
+  }
+
+  .ticket-id {
+    min-width: 48px;
+  }
+}
+/* =========================================================
+   FORCE FIX — CUSTOMER LOGIN PAGE ONLY
+   NO APP.JSX CHANGES
+========================================================= */
+
+/* The login page is the root page containing the login button,
+   but NOT the .customer-app portal */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn) {
+  min-height: 100vh !important;
+  width: 100% !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 24px !important;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(103, 86, 217, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(103, 86, 217, 0.08),
+      transparent 35%
+    ),
+    #080d13 !important;
+}
+
+
+/* LOGIN CARD */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  > div {
+  width: 100% !important;
+  max-width: 440px !important;
+
+  padding: 32px !important;
+
+  background: #121922 !important;
+
+  border: 1px solid #2b3745 !important;
+  border-radius: 18px !important;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.5) !important;
+}
+
+
+/* BRAND */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  .brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+
+  margin-bottom: 28px !important;
+}
+
+
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  .brand-mark {
+  width: 44px !important;
+  height: 44px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  background: linear-gradient(
+    135deg,
+    #6756d9,
+    #806bea
+  ) !important;
+
+  color: white !important;
+
+  border-radius: 12px !important;
+
+  font-size: 17px !important;
+  font-weight: 800 !important;
+
+  box-shadow:
+    0 8px 20px rgba(103, 86, 217, 0.3) !important;
+}
+
+
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  .brand-name {
+  color: #f4f6fb !important;
+
+  font-size: 17px !important;
+  font-weight: 800 !important;
+}
+
+
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  .brand-tag {
+  color: #7f8b9d !important;
+
+  font-size: 8px !important;
+  font-weight: 700 !important;
+
+  letter-spacing: 0.8px !important;
+}
+
+
+/* HEADING */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  h1 {
+  margin: 0 0 8px !important;
+
+  color: #f5f7fb !important;
+
+  font-size: 28px !important;
+  font-weight: 750 !important;
+
+  line-height: 1.2 !important;
+}
+
+
+/* DESCRIPTION */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  p {
+  margin: 0 0 24px !important;
+
+  color: #9aa5b5 !important;
+
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+
+/* FORM */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  form {
+  width: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 14px !important;
+}
+
+
+/* INPUTS */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  input {
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+  height: 48px !important;
+
+  padding: 0 15px !important;
+
+  background: #0d131b !important;
+
+  color: #f5f7fb !important;
+
+  border: 1px solid #2b3745 !important;
+  border-radius: 10px !important;
+
+  outline: none !important;
+
+  font-size: 13px !important;
+
+  box-shadow: none !important;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  input::placeholder {
+  color: #697586 !important;
+}
+
+
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  input:focus {
+  background: #101720 !important;
+
+  border-color: #7564e5 !important;
+
+  box-shadow:
+    0 0 0 3px rgba(103, 86, 217, 0.15) !important;
+}
+
+
+/* LOGIN BUTTON */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  .customer-primary {
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+  height: 48px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  margin: 2px 0 0 !important;
+  padding: 0 !important;
+
+  border: none !important;
+  border-radius: 10px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6756d9,
+      #7b67e7
+    ) !important;
+
+  color: #ffffff !important;
+
+  font-size: 13px !important;
+  font-weight: 700 !important;
+
+  cursor: pointer !important;
+
+  box-shadow:
+    0 8px 22px rgba(103, 86, 217, 0.28) !important;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  .customer-primary:hover {
+  transform: translateY(-1px) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7564e5,
+      #8975f0
+    ) !important;
+
+  box-shadow:
+    0 12px 28px rgba(103, 86, 217, 0.38) !important;
+}
+
+
+/* CREATE ACCOUNT BUTTON */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  .switch-btn {
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+  min-height: 46px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  margin-top: 12px !important;
+  padding: 0 15px !important;
+
+  background: #18212c !important;
+
+  color: #b8c1cf !important;
+
+  border: 1px solid #2d3948 !important;
+  border-radius: 10px !important;
+
+  font-size: 12px !important;
+  font-weight: 600 !important;
+
+  text-align: left !important;
+
+  cursor: pointer !important;
+}
+
+
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  .switch-btn:hover {
+  background: #202b38 !important;
+
+  border-color: #465364 !important;
+
+  color: #ffffff !important;
+}
+
+
+/* MANAGER ACCESS BUTTON
+   It is another button after the form */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  > div > button:not(.switch-btn) {
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+  min-height: 46px !important;
+
+  margin-top: 10px !important;
+  padding: 0 15px !important;
+
+  background: transparent !important;
+
+  color: #8995a6 !important;
+
+  border: 1px solid #2b3745 !important;
+  border-radius: 10px !important;
+
+  font-size: 12px !important;
+  font-weight: 600 !important;
+
+  text-align: left !important;
+
+  cursor: pointer !important;
+}
+
+
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  > div > button:not(.switch-btn):hover {
+  background: #161f29 !important;
+
+  color: #ffffff !important;
+
+  border-color: #465364 !important;
+}
+
+
+/* ERROR */
+#root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+  .error-banner {
+  margin-bottom: 16px !important;
+  padding: 12px 14px !important;
+
+  background: rgba(220, 70, 80, 0.12) !important;
+
+  color: #ff9fa7 !important;
+
+  border: 1px solid rgba(255, 110, 120, 0.25) !important;
+  border-radius: 10px !important;
+
+  font-size: 12px !important;
+}
+
+
+/* MOBILE */
+@media (max-width: 520px) {
+  #root > div:not(.customer-app):has(.customer-primary):has(.switch-btn) {
+    padding: 16px !important;
+  }
+
+  #root > div:not(.customer-app):has(.customer-primary):has(.switch-btn)
+    > div {
+    padding: 26px 20px !important;
+  }
+}
+
+/* =========================================================
+   FINAL FIX — MANAGER CUSTOMERS PAGE
+   Append/override conflicting rules
+========================================================= */
+
+/* Keep the manager page isolated from customer/login styles */
+.app,
+.app * {
+  box-sizing: border-box;
+}
+
+/* Hamburger + mobile menu */
+.hamburger {
+  width: 40px;
+  height: 40px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 248px;
+  right: 0;
+  display: none;
+  gap: 4px;
+  padding: 10px 30px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 60;
+}
+
+.mobile-menu button {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* Proper modal overlay */
+.modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1000 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 24px !important;
+  overflow-y: auto !important;
+
+  background: rgba(20, 24, 36, 0.42) !important;
+  backdrop-filter: blur(5px);
+}
+
+/* Customer modal */
+.modal {
+  width: min(620px, 100%) !important;
+  max-height: calc(100vh - 48px) !important;
+  overflow-y: auto !important;
+
+  padding: 24px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  color: var(--text) !important;
+  box-shadow: 0 25px 70px rgba(25, 30, 50, 0.22) !important;
+}
+
+.modal-head {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  margin-bottom: 22px !important;
+}
+
+.modal-head h2 {
+  margin: 0 !important;
+  color: var(--text) !important;
+  font-size: 22px !important;
+}
+
+.modal-head p {
+  margin: 6px 0 0 !important;
+  color: var(--text-muted) !important;
+}
+
+.close-btn {
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+
+  padding: 0 !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 9px !important;
+  background: #ffffff !important;
+  color: #667085 !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+}
+
+/* Fix dark inputs inside Add Customer */
+.app .customer-form {
+  display: grid !important;
+  width: 100% !important;
+  gap: 16px !important;
+}
+
+.app .customer-form label {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 7px !important;
+  color: #4e5563 !important;
+  font-size: 12px !important;
+  font-weight: 650 !important;
+}
+
+.app .customer-form input,
+.app .customer-form select,
+.app .customer-form textarea {
+  width: 100% !important;
+  min-height: 46px !important;
+  padding: 11px 13px !important;
+
+  border: 1px solid #e0e3eb !important;
+  border-radius: 9px !important;
+  background: #ffffff !important;
+  color: #292c38 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.app .customer-form input::placeholder,
+.app .customer-form textarea::placeholder {
+  color: #a2a7b3 !important;
+}
+
+.app .customer-form input:focus,
+.app .customer-form select:focus,
+.app .customer-form textarea:focus {
+  border-color: #8d80e6 !important;
+  box-shadow: 0 0 0 3px rgba(103, 86, 217, 0.10) !important;
+}
+
+@media (max-width: 850px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-menu {
+    left: 72px;
+  }
+}
+
+@media (max-width: 650px) {
+  .mobile-menu {
+    top: 64px;
+    left: 0;
+    padding: 10px 14px;
+  }
+
+  .modal-backdrop {
+    padding: 12px !important;
+  }
+
+  .modal {
+    max-height: calc(100vh - 24px) !important;
+    padding: 18px !important;
+  }
+}
+
+
+/* =========================================================
+   DASHBOARD — TICKET OVERVIEW / PIE CHART
+========================================================= */
+
+:root {
+  --ticket-chart-0: #6756d9;
+  --ticket-chart-1: #f0a54a;
+  --ticket-chart-2: #35a86b;
+  --ticket-chart-3: #8a93a3;
+}
+
+.ticket-overview-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  align-items: center;
+  gap: 30px;
+
+  margin-bottom: 20px;
+  padding: 24px;
+
+  border: 1px solid #e5e7ef;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(25, 30, 50, 0.04);
+}
+
+.ticket-overview-copy {
+  min-width: 0;
+}
+
+.ticket-overview-copy .section-head {
+  margin-bottom: 20px;
+}
+
+.ticket-status-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ticket-status-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  min-height: 48px;
+  padding: 11px 13px;
+
+  border: 1px solid #edf0f5;
+  border-radius: 10px;
+  background: #fafbfe;
+}
+
+.ticket-status-dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border-radius: 50%;
+}
+
+.ticket-status-dot.dot-0 { background: var(--ticket-chart-0); }
+.ticket-status-dot.dot-1 { background: var(--ticket-chart-1); }
+.ticket-status-dot.dot-2 { background: var(--ticket-chart-2); }
+.ticket-status-dot.dot-3 { background: var(--ticket-chart-3); }
+
+.ticket-status-name {
+  flex: 1;
+  min-width: 0;
+
+  color: #727987;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ticket-status-item strong {
+  color: #292c38;
+  font-size: 16px;
+}
+
+.ticket-chart-wrap {
+  display: grid;
+  place-items: center;
+}
+
+.ticket-donut {
+  width: 190px;
+  height: 190px;
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+}
+
+.ticket-donut::before {
+  content: "";
+  position: absolute;
+  inset: 26px;
+
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.ticket-donut.is-empty {
+  background: #eef0f4 !important;
+}
+
+.ticket-donut-center {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ticket-donut-center strong {
+  color: #292c38;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.ticket-donut-center span {
+  margin-top: 6px;
+  color: #9096a4;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 850px) {
+  .ticket-overview-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-chart-wrap {
+    order: -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .ticket-overview-panel {
+    padding: 18px;
+  }
+
+  .ticket-status-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-donut {
+    width: 165px;
+    height: 165px;
+  }
+
+  .ticket-donut::before {
+    inset: 23px;
+  }
+}
+
+
+/* =========================================================
+   DASHBOARD — TICKET GRAPH
+========================================================= */
+
+.ticket-graph-panel {
+  margin-bottom: 20px;
+  padding: 24px;
+
+  border: 1px solid #e5e7ef;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(25, 30, 50, 0.04);
+}
+
+.ticket-bar-chart {
+  height: 240px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;
+  gap: 22px;
+
+  padding: 18px 14px 0;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.ticket-bar-item {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 24px 1fr 30px;
+  align-items: end;
+  justify-items: center;
+  gap: 8px;
+}
+
+.ticket-bar-item > strong {
+  color: #4a5060;
+  font-size: 13px;
+}
+
+.ticket-bar-item > span {
+  color: #7b8290;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ticket-bar-track {
+  width: min(70px, 75%);
+  height: 100%;
+  display: flex;
+  align-items: end;
+
+  border-radius: 9px 9px 0 0;
+  background:
+    repeating-linear-gradient(
+      to top,
+      transparent 0,
+      transparent 39px,
+      #f0f1f5 40px
+    );
+}
+
+.ticket-bar {
+  width: 100%;
+  min-height: 4px;
+  border-radius: 9px 9px 0 0;
+  transition: height 0.35s ease;
+}
+
+.ticket-bar.bar-0 { background: var(--ticket-chart-0); }
+.ticket-bar.bar-1 { background: var(--ticket-chart-1); }
+.ticket-bar.bar-2 { background: var(--ticket-chart-2); }
+.ticket-bar.bar-3 { background: var(--ticket-chart-3); }
+
+/* Customer ticket status emoji */
+.customer-status-emoji {
+  display: inline-block;
+  margin-right: 2px;
+  font-size: 12px;
+  line-height: 1;
+  vertical-align: -1px;
+}
+
+@media (max-width: 560px) {
+  .ticket-graph-panel {
+    padding: 18px;
+  }
+
+  .ticket-bar-chart {
+    gap: 10px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .ticket-bar-item > span {
+    font-size: 9px;
+  }
+}
+/* =========================================================
+   FIX: MANAGER ADD CUSTOMER INPUTS
+========================================================= */
+
+#root > div.app
+.modal-backdrop
+.modal
+.customer-form
+input,
+#root > div.app
+.modal-backdrop
+.modal
+.customer-form
+input[type="text"],
+#root > div.app
+.modal-backdrop
+.modal
+.customer-form
+input[type="email"],
+#root > div.app
+.modal-backdrop
+.modal
+input {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+
+    color: #252735 !important;
+    -webkit-text-fill-color: #252735 !important;
+
+    border: 1px solid #dfe3ea !important;
+    border-radius: 10px !important;
+
+    box-shadow: none !important;
+    outline: none !important;
+
+    opacity: 1 !important;
+    color-scheme: light !important;
+}
+
+#root > div.app
+.modal-backdrop
+.modal
+.customer-form
+input::placeholder {
+    color: #9aa1ae !important;
+    -webkit-text-fill-color: #9aa1ae !important;
+    opacity: 1 !important;
+}
+
+#root > div.app
+.modal-backdrop
+.modal
+.customer-form
+input:focus {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+
+    color: #252735 !important;
+    -webkit-text-fill-color: #252735 !important;
+
+    border-color: #6756d9 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(103, 86, 217, 0.12) !important;
+}
